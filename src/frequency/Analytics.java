@@ -31,7 +31,9 @@ public class Analytics {
     }
 
     // fixing rounding issues by making sure that the values have the correct decimal places.
-    freqMap.replaceAll((key, value) -> Math.round(value / totalWords * 10.0) / 10.0);
+    for (Map.Entry<String, Double> entry : freqMap.entrySet()) {
+      freqMap.put(entry.getKey(), Math.round(entry.getValue() / totalWords * 1000.0) / 1000.0);
+    }
 
     return freqMap;
   }
