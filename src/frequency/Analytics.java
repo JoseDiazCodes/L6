@@ -27,8 +27,12 @@ public class Analytics {
       // looks for key if it exists add 1 if not initialize the value of the key to 1
       // then we divide by total words to get the average.
       freqMap.put(upperWord,
-              freqMap.getOrDefault(upperWord, 0.00 ) + 1.0 / totalWords);
+              freqMap.getOrDefault(upperWord, 0.00 ) + 1.0);
     }
+
+    // fixing rounding issues by making sure that the values have the correct decimal places.
+    freqMap.replaceAll((key, value) -> Math.round(value / totalWords * 10.0) / 10.0);
+
     return freqMap;
   }
 }
