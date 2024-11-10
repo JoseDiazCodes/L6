@@ -3,7 +3,21 @@ package frequency;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Utility class for analyzing text and computing word frequencies.
+ * Provides methods to calculate relative frequency of words in text.
+ */
 public class Analytics {
+  /**
+   * Calculates the relative frequency of each word in a given message.
+   * The frequency is calculated as the number of occurrences of a word
+   * divided by the total number of words. Results are rounded to three
+   * decimal places.
+   *
+   * @param message The input text to analyze
+   * @return A map where keys are uppercase words and values are their relative frequencies,
+   *         or null if the input is null or empty
+   */
   public static Map<String, Double> wordFrequency(String message) {
 
     // handle null or empty strings

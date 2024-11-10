@@ -3,22 +3,22 @@ package doubledispatch;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Central simulation engine for managing space exploration.
+ * Provides factory methods for creating planets and explorers,
+ * and maintains a log of exploration activities.
+ */
 public class SimulationBuilder {
-//  private static final Map<String, Supplier<IPlanet>> planetFactory = new HashMap<>();
-//  private static final Map<String, Supplier<ISpaceExplorer>> explorerFactory = new HashMap<>();
+  /** List to store simulation log messages. */
   private static final List<String> simLog = new ArrayList<>();
 
-  // adding new planets (original approach)
-//  public static void registerPlanet(String name, Supplier<IPlanet> supplier) {
-//    planetFactory.put(name.toLowerCase(), supplier);
-//  }
-//
-//  // adding new explorers
-//  public static void registerExplorer(String name, Supplier<ISpaceExplorer> supplier) {
-//    explorerFactory.put(name.toLowerCase(), supplier);
-//  }
-
+  /**
+   * Creates a new planet instance based on the provided name.
+   * Case-insensitive planet name matching.
+   *
+   * @param name The name of the planet to create ("Mars", "Mercury", or "Venus")
+   * @return A new planet instance, or null if the planet name is unknown
+   */
   public static IPlanet createPlanet(String name) {
     if (name == null) {
       return null;
@@ -32,6 +32,13 @@ public class SimulationBuilder {
     };
   }
 
+  /**
+   * Creates a new space explorer instance based on the provided name.
+   * Case-insensitive explorer name matching.
+   *
+   * @param name The name of the explorer to create ("LifeExplorer" or "TerrainExplorer")
+   * @return A new explorer instance, or null if the explorer name is unknown
+   */
   public static ISpaceExplorer createExplorer(String name) {
     if (name == null) {
       return null;
@@ -44,10 +51,20 @@ public class SimulationBuilder {
     };
   }
 
+  /**
+   * Adds a message to the simulation log.
+   *
+   * @param message The message to add to the log
+   */
   public static void addToLog(String message) {
     simLog.add(message);
   }
 
+  /**
+   * Gets a copy of the current simulation log.
+   *
+   * @return A new ArrayList containing all logged messages
+   */
   public static List<String> getSimulationLog() {
     return new ArrayList<>(simLog);
   }
